@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MemeService } from '../service/meme.service';
 
 import { IMeme } from '../model/IMeme.model';
-import { IUpdateResponse } from '../model/IUpdate.model';
+import { IUpdateResponse } from '../model/IUpdateResponse.model';
 
 
 /**

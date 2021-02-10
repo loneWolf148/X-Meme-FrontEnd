@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { MemeService } from '../service/meme.service';
 
-import { IUploadResponse } from '../model/IUploadResponse';
+import { IUploadResponse } from '../model/IUploadResponse.model';
 import { IMeme } from '../model/IMeme.model';
 
 /**

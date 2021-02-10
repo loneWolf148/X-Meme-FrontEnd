@@ -6,8 +6,8 @@ import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
 import { IMeme } from '../model/IMeme.model';
-import { IUpdateResponse } from '../model/IUpdate.model';
-import { IUploadResponse } from '../model/IUploadResponse';
+import { IUpdateResponse } from '../model/IUpdateResponse.model';
+import { IUploadResponse } from '../model/IUploadResponse.model';
 
 /**
  * @description This class encapsulated http calls associated with CRUD operation related to memes
