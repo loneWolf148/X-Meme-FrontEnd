@@ -36,10 +36,10 @@ Models are present inside [model](https://github.com/loneWolf148/X-Meme-FrontEnd
 
 2. [IUploadResponse](https://github.com/loneWolf148/X-Meme-FrontEnd/tree/master/src/app/model/IUploadResponse.model.ts) - Response after upload of new meme is succesful
 
-3. [IUpdateResponse](https://github.com/loneWolf148/X-Meme-FrontEnd/tree/master/src/app/model/IUpdateResponse.models.ts) - Response after update of meme payload is succesful.
+3. [IUpdateResponse](https://github.com/loneWolf148/X-Meme-FrontEnd/tree/master/src/app/model/IUpdateResponse.model.ts) - Response after update of meme payload is succesful.
 
 ## Services
-1. [MemeService](https://github.com/loneWolf148/X-Meme-FrontEnd/tree/master/src/app/service) All Necessary HTTP Services related to X-Meme are encapsulated.
+1. [MemeService](https://github.com/loneWolf148/X-Meme-FrontEnd/tree/master/src/app/service) - All Necessary HTTP Services related to X-Meme are encapsulated.
 
 ## Development server
 
