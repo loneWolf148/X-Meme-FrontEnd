@@ -1,0 +1,66 @@
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="d-flex justify-content-center">Upload New Meme</h1>
+
+        <form #uploadForm="ngForm" (ngSubmit)="submitForm()">
+
+            <div class="form-group">
+                <label for="owner" class="text-capitalize font-weight-bold">Meme Uploader</label>
+                <input type="text" class="form-control" required placeholder="Enter Your Full Name"
+                    pattern="[A-Za-z ]{1,32}" id="owner" minlength="3" maxlength="30" name="owner"
+                    [(ngModel)]="meme.name" #owner="ngModel">
+                <div *ngIf="owner.touched && owner.invalid">
+                    <div class="alert alert-danger" *ngIf="owner.errors.required">
+                        Putting Full Name of Uploader is Mandatory
+                    </div>
+                    <div class="alert alert-danger" *ngIf="owner.errors.minlength; else wrongNameFormat">
+                        Name Must Be At Least 3 Characters Long
+                    </div>
+                    <ng-template #wrongNameFormat>
+                        <div class="alert alert-danger">
+                            Please Enter Name In Corrct Form
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="caption" class="text-capitalize font-weight-bold">Meme Caption</label>
+                <input type="text" class="form-control" required placeholder="Enter Meme Caption" id="caption"
+                    name="caption" [(ngModel)]="meme.caption" #caption="ngModel">
+                <div *ngIf="caption.touched && caption.invalid">
+                    <div class="alert alert-danger" *ngIf="caption.errors.required; else wrongCaptionFormat">
+                        Meme Caption is Mandatory
+                    </div>
+                    <ng-template #wrongCaptionFormat>
+                        <div class="alert alert-danger">
+                            Please Enter Caption In Correct Form
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="url" class="text-capitalize font-weight-bold">Meme URL</label>
+                <input type="url" class="form-control" required placeholder="Enter Meme URL" id="url" name="url"
+                    pattern="^(http|https)?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)"
+                    [(ngModel)]="meme.url" #url="ngModel">
+                <div *ngIf="url.touched && url.invalid">
+                    <div class="alert alert-danger" *ngIf="url.errors.required; else wrongUrlFormat">
+                        Meme URL is Mandatory
+                    </div>
+                    <ng-template #wrongUrlFormat>
+                        <div class="alert alert-danger">
+                            Enter URL In Correct Format
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+
+            <input type="submit" value="Upload" class="btn btn-primary"
+                [disabled]="uploadForm.invalid || uploadForm.pristine">
+            &nbsp; &nbsp; &nbsp;
+            <a class="btn btn-danger" [routerLink]="['/home']">Cancel</a>
+        </form>
+    </div>
+</div>

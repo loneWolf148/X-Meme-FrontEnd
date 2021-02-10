@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="d-flex justify-content-center">Edit Meme</h1>
+
+        <form *ngIf="!payloadLoading; else memeLoading" #uploadForm="ngForm" (ngSubmit)="submitForm()">
+
+            <div class="form-group">
+                <label for="owner" class="text-capitalize font-weight-bold">Meme Uploader</label>
+                <input type="text" class="form-control" readonly id="owner" name="owner" [(ngModel)]="meme.name">
+            </div>
+
+            <div class="form-group">
+                <label for="caption" class="text-capitalize font-weight-bold">Meme Caption</label>
+                <input type="text" class="form-control" required placeholder="Enter Meme Caption" id="caption"
+                    name="caption" [(ngModel)]="meme.caption" #caption="ngModel">
+                <div *ngIf="caption.touched && caption.invalid">
+                    <div class="alert alert-danger" *ngIf="caption.errors.required; else wrongCaptionFormat">
+                        Caption is Mandatory
+                    </div>
+                    <ng-template #wrongCaptionFormat>
+                        <div class="alert alert-danger">
+                            Please Enter Caption In Correct Form
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="url" class="text-capitalize font-weight-bold">Meme URL</label>
+                <input type="url" class="form-control" required placeholder="Enter Meme URL" id="url" name="url"
+                    pattern="^(http|https)?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)"
+                    [(ngModel)]="meme.url" #url="ngModel">
+                <div *ngIf="url.touched && url.invalid">
+                    <div class="alert alert-danger" *ngIf="url.errors.required; else wrongUrlFormat">
+                        Meme URL is Mandatory
+                    </div>
+                    <ng-template #wrongUrlFormat>
+                        <div class="alert alert-danger">
+                            Enter URL In Correct Format
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+
+            <input type="submit" value="Upload" class="btn btn-primary"
+                [disabled]="uploadForm.invalid || uploadForm.pristine">
+            &nbsp; &nbsp; &nbsp;
+            <a class="btn btn-danger" [routerLink]="['/home']">Cancel</a>
+        </form>
+
+        <ng-template #memeLoading>
+            <figure class="figure payload-loading">
+                <img src="../../assets/loading.gif" class="figure-img img-fluid rounded" alt="Loading">
+                <figcaption class="figure-caption text-center">Meme Payload is Loading...Please Wait</figcaption>
+            </figure>
+        </ng-template>
+    </div>
+</div>

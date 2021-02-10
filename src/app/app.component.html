@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <a class="navbar-brand" data-toggle="collapse" data-target=".navbar-collapse.show" [routerLink]="['home']">
+        <span class="text-upperase text-primary font-weight-bold">X-Meme</span>
+        <img src="assets/logo.jpg" alt="Company Logo" width="50px" height="40px">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active text-primary text-uppercase font-weight-bolder" data-toggle="collapse"
+                data-target=".navbar-collapse.show" [routerLink]="['upload-meme']">
+                ADD MEME
+            </a>
+        </div>
+
+        <div class="navbar-nav ml-auto">
+            <a class="text-uppercase text-primary font-weight-bold anchor-external" target="_blank"
+                href="https://crio-profile.netlify.app/">About
+                Developer</a>
+        </div>
+    </div>
+</nav>
+
+<div class="content-margin-top">
+    <router-outlet></router-outlet>
+</div>

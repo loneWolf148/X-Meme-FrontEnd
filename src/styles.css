@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.content-margin-top {
+  margin-top: 5rem;
+}
+
+.form-control.ng-touched.ng-invalid {
+  border: 2px solid red;
+}
+
+.meme-jumbotron {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.meme-jumbotron-content {
+  text-align: center;
+}
