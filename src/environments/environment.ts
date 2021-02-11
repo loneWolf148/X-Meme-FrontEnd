@@ -5,7 +5,9 @@
 export const environment = {
   production: false,
   author: "Subham Das",
-  apiUrl : "http://localhost:5000/memes",
+  apiUrl : "http://localhost:5000",
+  memeEndPoint: "memes",
+  reviewEndPoint : "reviews"
 };
 
 /*

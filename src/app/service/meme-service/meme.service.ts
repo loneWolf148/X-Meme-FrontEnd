@@ -3,11 +3,11 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 
-import { IMeme } from '../model/IMeme.model';
-import { IUpdateResponse } from '../model/IUpdateResponse.model';
-import { IUploadResponse } from '../model/IUploadResponse.model';
+import { IMeme } from '../../model/IMeme.model';
+import { IUpdateResponse } from '../../model/IUpdateResponse.model';
+import { IUploadResponse } from '../../model/IUploadResponse.model';
 
 /**
  * @description This class encapsulated http calls associated with CRUD operation related to memes
@@ -23,6 +23,11 @@ export class MemeService {
     headers: new HttpHeaders({ "Content-Type": "application/json" })
   };
 
+  /**
+   * @description Base API End Point to access Meme Services to remote API
+   */
+  private readonly baseServiceUrl = `${environment.apiUrl}/${environment.memeEndPoint}`;
+
   constructor(private http: HttpClient) { }
 
   /**
@@ -30,7 +35,7 @@ export class MemeService {
    * @returns {Observable<IMeme>} retuns list of 100 most recently uploaded memes
    */
   getMemes(): Observable<IMeme[]> {
-    return this.http.get<IMeme[]>(environment.apiUrl).pipe(catchError(this.errorHandler));
+    return this.http.get<IMeme[]>(this.baseServiceUrl).pipe(catchError(this.errorHandler));
   }
 
   /**
@@ -39,7 +44,7 @@ export class MemeService {
    * @returns {Observable<IMeme>} Meme payload if found, otherwise 404 error status if not found
    */
   getMeme(id: number): Observable<IMeme> {
-    return this.http.get<IMeme>(`${environment.apiUrl}/${id}`).pipe(catchError(this.errorHandler));
+    return this.http.get<IMeme>(`${this.baseServiceUrl}/${id}`).pipe(catchError(this.errorHandler));
   }
 
   /**
@@ -50,7 +55,7 @@ export class MemeService {
   async checkImageUrl(url: string): Promise<boolean> {
     try {
       const res = await fetch(url, { mode: "no-cors" });
-      return true; 
+      return true;
     } catch (err) {
       return false;
     }
@@ -68,7 +73,7 @@ export class MemeService {
       url: meme.url
     };
 
-    return this.http.post<IUploadResponse>(environment.apiUrl, memeContent, this.httpOptions).pipe(catchError(this.errorHandler));
+    return this.http.post<IUploadResponse>(this.baseServiceUrl, memeContent, this.httpOptions).pipe(catchError(this.errorHandler));
   }
 
   /**
@@ -77,7 +82,7 @@ export class MemeService {
    * @returns {Observable<IUploadResponse>} success message if successfully updated
    */
   editMeme(updatedMeme: IMeme): Observable<IUpdateResponse> {
-    const requestUrl = `${environment.apiUrl}/${updatedMeme.id}`;
+    const requestUrl = `${this.baseServiceUrl}/${updatedMeme.id}`;
 
     const content = {
       name: updatedMeme.name,

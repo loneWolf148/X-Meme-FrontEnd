@@ -1,0 +1,29 @@
+<div class="container">
+    <div *ngIf="isLoading || reviews.length === 0; else reviewsPresent" class="jumbotron meme-jumbotron">
+        <div *ngIf="isLoading; else reviewsLoaded">
+            <figure class="figure meme-jumbotron-content">
+                <img src="../../assets/loading.gif" class="figure-img img-fluid rounded" alt="Loading">
+                <figcaption class="figure-caption text-center">Reviews are Loading...Please Wait</figcaption>
+            </figure>
+        </div>
+
+        <ng-template #reviewsLoaded>
+            <div *ngIf="reviews.length === 0">
+                <h1 class="display-4 text-center">No One Reviewed X-Meme</h1>
+                <hr class="my-4">
+                <p class="lead text-center">Please Add A Review</p>
+            </div>
+        </ng-template>
+    </div>
+    <ng-template #reviewsPresent>
+        <div class="jumbotron">
+            <div *ngFor="let review of reviews">
+                <div [class]="getReviewClasses(review)" role="alert">
+                    <h5>{{review.reviewer}} <small>({{review.stars}} stars)</small></h5>
+                    <hr>
+                    <p class="font-italic">{{review.comment}}</p>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</div>

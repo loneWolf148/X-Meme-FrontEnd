@@ -7,6 +7,8 @@ import { MemeListComponent } from './meme-list/meme-list.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { UploadMemeComponent } from './upload-meme/upload-meme.component';
 import { HomeComponent } from './home/home.component';
+import { ReviewListComponent } from './review-list/review-list.component';
+import { UploadReviewComponent } from './upload-review/upload-review.component';
 
 const routes: Routes = [
   { path: "edit-meme/:id", component: EditMemeComponent },
@@ -14,6 +16,8 @@ const routes: Routes = [
   { path: "meme/:id", component: MemeComponent },
   { path: "meme-list", component: MemeListComponent },
   { path: "upload-meme", component: UploadMemeComponent },
+  { path: "review-list", component: ReviewListComponent },
+  { path: "upload-review", component: UploadReviewComponent },
   { path: "", redirectTo: "/home", pathMatch: "full" },
   { path: "page-not-found", component: PageNotFoundComponent },
   { path: "**", component: PageNotFoundComponent }

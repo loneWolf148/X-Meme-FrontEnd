@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'MemeStream';
+  insideReview: boolean = false;
+
+  enableReviewNavigation() {
+    this.insideReview = true;
+  }
+
+  disableReviewNavigation() {
+    this.insideReview = false;
+  }
 }

@@ -1,4 +1,4 @@
-# MemeStream
+# X-Meme (Angular Front End Project)
 
 ## Author 
 * Name - Subham Kumar Das
@@ -27,7 +27,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 5. [UploadMemeComponent](https://github.com/loneWolf148/X-Meme-FrontEnd/tree/master/src/app/upload-meme) - Component resposible for uploading new meme to backed api repository
 
-6. [PageNotFoundComponent](https://github.com/loneWolf148/X-Meme-FrontEnd/tree/master/src/app/page-not-found) - Component which will be rendered if 404-page not found error occurs. 
+6. [UploadReviewComponent](https://github.com/loneWolf148/X-Meme-FrontEnd/tree/master/src/app/upload-review) - Component responsible for taking input of user review and calling necessary services to remote API
+
+7. [ReviewListComponent](https://github.com/loneWolf148/X-Meme-FrontEnd/tree/master/src/app/review-list) - Component renders 20 most recently uploaded reviews.
+
+8. [PageNotFoundComponent](https://github.com/loneWolf148/X-Meme-FrontEnd/tree/master/src/app/page-not-found) - Component which will be rendered if 404-page not found error occurs. 
 
 ## Models 
 Models are present inside [model](https://github.com/loneWolf148/X-Meme-FrontEnd/tree/master/src/app/model) directory
@@ -38,8 +42,12 @@ Models are present inside [model](https://github.com/loneWolf148/X-Meme-FrontEnd
 
 3. [IUpdateResponse](https://github.com/loneWolf148/X-Meme-FrontEnd/tree/master/src/app/model/IUpdateResponse.model.ts) - Response after update of meme payload is succesful.
 
+4. [IReview](https://github.com/loneWolf148/X-Meme-FrontEnd/tree/master/src/app/model/IReview.model.ts) - Model encapsulating review payload.
+
 ## Services
-1. [MemeService](https://github.com/loneWolf148/X-Meme-FrontEnd/tree/master/src/app/service) - All Necessary HTTP Services related to X-Meme are encapsulated.
+1. [MemeService](https://github.com/loneWolf148/X-Meme-FrontEnd/tree/master/src/app/service/meme-service) - All Necessary HTTP Services related to X-Meme are encapsulated.
+
+2. [ReviewServer](https://github.com/loneWolf148/X-Meme-FrontEnd/tree/master/src/app/service/review-service) - All Necarry HTTP Services related to user's review are encapsulated
 
 ## Development server
 

@@ -11,8 +11,10 @@ import { UploadMemeComponent } from './upload-meme/upload-meme.component';
 import { EditMemeComponent } from './edit-meme/edit-meme.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
-import { MemeService } from './service/meme.service';
+import { MemeService } from './service/meme-service/meme.service';
 import { HomeComponent } from './home/home.component';
+import { ReviewListComponent } from './review-list/review-list.component';
+import { UploadReviewComponent } from './upload-review/upload-review.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { HomeComponent } from './home/home.component';
     UploadMemeComponent,
     EditMemeComponent,
     PageNotFoundComponent,
-    HomeComponent
+    HomeComponent,
+    ReviewListComponent,
+    UploadReviewComponent
   ],
   imports: [
     BrowserModule,

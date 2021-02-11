@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { MemeService } from '../service/meme.service';
+import { MemeService } from '../service/meme-service/meme.service';
 
 import { IUploadResponse } from '../model/IUploadResponse.model';
 import { IMeme } from '../model/IMeme.model';

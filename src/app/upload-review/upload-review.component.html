@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="d-flex justify-content-center">Upload New Review</h1>
+
+        <form #uploadForm="ngForm" (ngSubmit)="submitForm()">
+
+            <div class="form-group">
+                <label for="owner" class="text-capitalize font-weight-bold">Review Uploader</label>
+                <input type="text" class="form-control" required placeholder="Enter Your Full Name"
+                    pattern="[A-Za-z ]{1,32}" id="owner" minlength="3" maxlength="30" name="owner"
+                    [(ngModel)]="review.reviewer" #owner="ngModel">
+                <div *ngIf="owner.touched && owner.invalid">
+                    <div class="alert alert-danger" *ngIf="owner.errors.required">
+                        Putting Full Name of Uploader is Mandatory
+                    </div>
+                    <div class="alert alert-danger" *ngIf="owner.errors.minlength; else wrongNameFormat">
+                        Name Must Be At Least 3 Characters Long
+                    </div>
+                    <ng-template #wrongNameFormat>
+                        <div class="alert alert-danger">
+                            Please Enter Name In Corrct Form
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="caption" class="text-capitalize font-weight-bold">Add Review</label>
+                <textarea class="form-control" required placeholder="Enter Your Review" id="caption" rows="4"
+                    name="caption" [(ngModel)]="review.comment" #caption="ngModel"></textarea>
+                <div *ngIf="caption.touched && caption.invalid">
+                    <div class="alert alert-danger" *ngIf="caption.errors.required; else wrongCaptionFormat">
+                        Meme Caption is Mandatory
+                    </div>
+                    <ng-template #wrongCaptionFormat>
+                        <div class="alert alert-danger">
+                            Please Enter Caption In Correct Form
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="stars" class="text-capitalize font-weight-bold">How Many Stars</label>
+                <input type="text" pattern="[1-5]{1}" maxlength="1" class="form-control" required
+                    placeholder="How Many Stars?" id="stars" name="stars" [(ngModel)]="review.stars" #stars="ngModel">
+                <div *ngIf="stars.touched && stars.invalid">
+                    <div class="alert alert-danger" *ngIf="stars.errors.required; else wrongFormat">
+                        Mentioning Stars is Mandatory
+                    </div>
+                    <ng-template #wrongFormat>
+                        <div class="alert alert-danger text-capitalize">
+                            Number of Stars can only be between 1 and 5
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+
+            <input type="submit" value="Upload" class="btn btn-primary"
+                [disabled]="uploadForm.invalid || uploadForm.pristine">
+            &nbsp; &nbsp; &nbsp;
+            <a class="btn btn-danger" [routerLink]="['review-list']">Cancel</a>
+        </form>
+    </div>
+</div>

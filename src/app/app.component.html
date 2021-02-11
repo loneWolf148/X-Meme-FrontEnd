@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-    <a class="navbar-brand" data-toggle="collapse" data-target=".navbar-collapse.show" [routerLink]="['home']">
-        <span class="text-upperase text-primary font-weight-bold">X-Meme</span>
+    <a class="navbar-brand" data-toggle="collapse" data-target=".navbar-collapse.show" [routerLink]="['home']"
+        (click)="disableReviewNavigation()">
+        <span class=" text-upperase text-primary font-weight-bold">X-Meme</span>
         <img src="assets/logo.jpg" alt="Company Logo" width="50px" height="40px">
     </a>
 
@@ -11,9 +12,24 @@
 
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-item nav-link active text-primary text-uppercase font-weight-bolder" data-toggle="collapse"
-                data-target=".navbar-collapse.show" [routerLink]="['upload-meme']">
+            <a class="nav-item nav-link text-primary text-uppercase font-weight-bolder" data-toggle="collapse"
+                data-target=".navbar-collapse.show" [routerLink]="['upload-meme']" (click)="disableReviewNavigation()">
                 ADD MEME
+            </a>
+        </div>
+
+        <div *ngIf="insideReview" class="navbar-nav">
+            <a class="nav-item nav-link text-primary text-uppercase font-weight-bolder" data-toggle="collapse"
+                data-target=".navbar-collapse.show" [routerLink]="['upload-review']"
+                (click)="disableReviewNavigation()">
+                ADD REVIEW
+            </a>
+        </div>
+
+        <div *ngIf="!insideReview" class="navbar-nav">
+            <a class="nav-item nav-link text-primary text-uppercase font-weight-bolder" data-toggle="collapse"
+                data-target=".navbar-collapse.show" [routerLink]="['review-list']" (click)="enableReviewNavigation()">
+                Reviews
             </a>
         </div>
 
