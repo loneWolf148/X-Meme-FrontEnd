@@ -11,7 +11,9 @@
             <div *ngIf="memes.length === 0; else memesPresent">
                 <h1 class="display-4 text-center">No Memes Present in Repository</h1>
                 <hr class="my-4">
-                <p class="lead text-center">Please Add Some Memes</p>
+                <div class="text-center">
+                    <a class="btn btn-lg btn-primary" [routerLink]="['/upload-meme']">Add Meme</a>
+                </div>
             </div>
             <div *ngFor="let meme of memes" #memesPresent>
                 <app-meme [meme]="meme"></app-meme>

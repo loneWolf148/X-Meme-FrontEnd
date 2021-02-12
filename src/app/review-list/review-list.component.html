@@ -11,7 +11,9 @@
             <div *ngIf="reviews.length === 0">
                 <h1 class="display-4 text-center">No One Reviewed X-Meme</h1>
                 <hr class="my-4">
-                <p class="lead text-center">Please Add A Review</p>
+                <div class="text-center">
+                    <a class="btn btn-lg btn-primary" [routerLink]="['/upload-review']">Add Review</a>
+                </div>
             </div>
         </ng-template>
     </div>
