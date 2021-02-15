@@ -5,6 +5,7 @@ import { MemeService } from '../service/meme-service/meme.service';
 
 import { IMeme } from '../model/IMeme.model';
 import { IUpdateResponse } from '../model/IUpdateResponse.model';
+import { windowWhen } from 'rxjs/operators';
 
 
 /**
@@ -87,11 +88,15 @@ export class EditMemeComponent implements OnInit {
    * @returns {Promise<void>}
    */
   async submitForm(): Promise<void> {
-    const urlExists: boolean = await this.service.checkImageUrl(this.meme.url);
-    if (urlExists) {
-      this.editForm();
-    } else {
-      window.alert("URL Doesn't Exist");
+    try {
+      const validUrl = this.service.checkImageUrl(this.meme.url);
+      if (validUrl) {
+        this.editForm();
+      } else {
+        window.alert("Wrong Image URL");
+      }
+    } catch (_) {
+      window.alert("Wrong Image URL")
     }
   }
 }

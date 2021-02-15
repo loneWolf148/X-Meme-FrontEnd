@@ -50,15 +50,17 @@ export class MemeService {
   /**
    * @description This method checks whether given URL is existing or not
    * @param url Meme Image URL specified by Uploader who's existence need to be checked
-   * @returns {Promise<boolean>}
+   * @returns a promise in which true indicates url exists and false means it doens't 
    */
   async checkImageUrl(url: string): Promise<boolean> {
-    try {
-      const res = await fetch(url, { mode: "no-cors" });
-      return true;
-    } catch (err) {
-      return false;
-    }
+    const imagePromise = new Promise<boolean>((resolve, reject) => {
+      const image = new Image();
+      image.onload = () => resolve(true);
+      image.onerror = () => reject(false);
+      image.src = url;
+    });
+
+    return imagePromise;
   }
 
   /**

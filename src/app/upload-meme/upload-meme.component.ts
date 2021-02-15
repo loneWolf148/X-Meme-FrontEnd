@@ -5,6 +5,7 @@ import { MemeService } from '../service/meme-service/meme.service';
 
 import { IUploadResponse } from '../model/IUploadResponse.model';
 import { IMeme } from '../model/IMeme.model';
+import { windowWhen } from 'rxjs/operators';
 
 /**
  * @description This component is resposible for encapsulating Meme Upload
@@ -55,11 +56,15 @@ export class UploadMemeComponent implements OnInit {
    * @returns {Promise<void>}
    */
   async submitForm(): Promise<void> {
-    const urlExists: boolean = await this.service.checkImageUrl(this.meme.url);
-    if (urlExists) {
-      this.uploadMeme();
-    } else {
-      window.alert("URL Doesn't Exist");
+    try {
+      const validUrl = await this.service.checkImageUrl(this.meme.url);
+      if (validUrl) {
+        this.uploadMeme();
+      } else {
+        window.alert("Wrong Image URL");
+      }
+    } catch (_) {
+      window.alert("Wrong Image URL")
     }
   }
 }
