@@ -5,7 +5,8 @@
         <button class="btn btn-primary btn-edit-meme" (click)="editMeme()">Edit Meme</button>
     </div>
     <figure class="figure meme-jumbotron-content">
-        <img src={{meme.url}} class="figure-img img-fluid rounded" alt="Meme Not Found">
+        <img src={{meme.url}} class="figure-img img-fluid rounded" alt="Meme Not Found"
+            onerror="this.src='../../assets/image-not-found.jpg'">
         <figcaption class="figure-caption text-center">{{meme.caption}}</figcaption>
     </figure>
 </div>
