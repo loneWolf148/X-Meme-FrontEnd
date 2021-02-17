@@ -5,7 +5,6 @@ import { MemeService } from '../service/meme-service/meme.service';
 
 import { IMeme } from '../model/IMeme.model';
 import { IUpdateResponse } from '../model/IUpdateResponse.model';
-import { windowWhen } from 'rxjs/operators';
 
 
 /**
@@ -30,6 +29,17 @@ export class EditMemeComponent implements OnInit {
   };
 
   /**
+   * @type {IMeme}
+   * @description Object to store old meme payloads
+   */
+  readonly oldMeme: IMeme = {
+    id: null,
+    name: null,
+    caption: null,
+    url: null
+  };
+
+  /**
    * @type {boolean}
    * @description true means meme payload is being loaded, false means already loaded
    */
@@ -44,6 +54,7 @@ export class EditMemeComponent implements OnInit {
   constructor(private service: MemeService, private router: Router, private activatedRoute: ActivatedRoute) {
     const id: number = +this.activatedRoute.snapshot.paramMap.get("id");
     this.meme.id = id;
+    this.oldMeme.id = this.meme.id;
   }
 
   /**
@@ -56,6 +67,10 @@ export class EditMemeComponent implements OnInit {
       this.meme.caption = data.caption;
       this.meme.url = data.url;
 
+      this.oldMeme.name = this.meme.name;
+      this.oldMeme.caption = this.meme.caption;
+      this.oldMeme.url = this.meme.url;
+
       this.payloadLoading = false;
     }, _ => {
       window.alert("Meme Details Could Not Be Fetched");
@@ -63,6 +78,14 @@ export class EditMemeComponent implements OnInit {
 
       this.router.navigate(["home"]);
     })
+  }
+
+  /**
+   * This method checks whether updated meme payloads are same as old
+   * @returns true means payloadas are same, false means payloads changed
+   */
+  payloadsSame(): boolean {
+    return this.meme.caption === this.oldMeme.caption && this.meme.url === this.oldMeme.url;
   }
 
   /**

@@ -43,7 +43,7 @@
             </div>
 
             <input type="submit" value="Upload" class="btn btn-primary"
-                [disabled]="uploadForm.invalid || uploadForm.pristine">
+                [disabled]="uploadForm.invalid || uploadForm.pristine || payloadsSame()">
             &nbsp; &nbsp; &nbsp;
             <a class="btn btn-danger" [routerLink]="['/home']">Cancel</a>
         </form>
