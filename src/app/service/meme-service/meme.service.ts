@@ -55,7 +55,10 @@ export class MemeService {
   async checkImageUrl(url: string): Promise<boolean> {
     const imagePromise = new Promise<boolean>((resolve, reject) => {
       const image = new Image();
-      image.onload = () => resolve(true);
+      image.onload = () => {
+        console.log(image.height, image.width);
+        resolve(image.height > 9 && image.width > 16);
+      }
       image.onerror = () => reject(false);
       image.src = url;
     });

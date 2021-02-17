@@ -57,14 +57,16 @@ export class UploadMemeComponent implements OnInit {
    */
   async submitForm(): Promise<void> {
     try {
-      const validUrl = await this.service.checkImageUrl(this.meme.url);
+      const validUrl : boolean = await this.service.checkImageUrl(this.meme.url);
+      console.log(validUrl ? "URL exists" : "URL doesn't exist");
+
       if (validUrl) {
         this.uploadMeme();
       } else {
         window.alert("Wrong Image URL");
       }
     } catch (_) {
-      window.alert("Wrong Image URL")
+      window.alert("URL doesn't exist")
     }
   }
 }
