@@ -10,9 +10,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## About Project
 * This Project is Angular Frontend part of X-Meme designed during Crio Winter of Doing (CWodD) Challenge, 2021.
 
-* Check out the deployed site in Nelify [Here](https://crio-x-meme.netlify.app/)
+* Check out the deployed site in [Netlify](https://crio-x-meme.netlify.app/).
 
-* The API for this project is deployed in Heroku. [Check it out](https://crio-xmeme-boot.herokuapp.com/)
+* The API for this project is deployed in [Heroku](https://crio-xmeme-boot.herokuapp.com/).
 
 * Check out Github Repository for backend [Here](https://github.com/loneWolf148/X-Meme-Backend.git)
 
